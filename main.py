@@ -1,19 +1,21 @@
-import  os
-import telebot 
-
-
+import telebot
+from masseges import massege
+import os
 class Bot:
-    def __init__(self) -> None:
-        global bot    
+    def __init__(self) -> None:  
         self.BOT_TOKEN=os.environ.get("BOT_TOKEN")
         self.bot = telebot.TeleBot(self.BOT_TOKEN)
-        bot = self.bot
+        self.masseges = massege(self.bot)
+        self.register_handlers()
 
+    def register_handlers(self):
+        @self.bot.message_handler(commands=["start"])
+        def start_message(message):
+            self.masseges.start_message(message)
+
+        
     def run(self) -> None :
-        bot.infinity_polling()
+        self.bot.infinity_polling()
 
-
-
-@bot.message_handler(commands=["start" ])
-def start_message(message):
-    bot.reply_to(message, "Welcome To My Bot")
+bot_init = Bot()
+bot_init.run()
