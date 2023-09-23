@@ -1,21 +1,44 @@
 import telebot
 from masseges import massege
 import os
+import pickle
+
 class Bot:
     def __init__(self) -> None:  
         self.BOT_TOKEN=os.environ.get("BOT_TOKEN")
         self.bot = telebot.TeleBot(self.BOT_TOKEN)
         self.masseges = massege(self.bot)
         self.register_handlers()
+        try:
+            with open('user_language.pkl', 'rb') as f:
+                self.user_language = pickle.load(f)
+        except (OSError, IOError) as e:
+            self.user_language = {}
 
     def register_handlers(self):
         @self.bot.message_handler(commands=["start"])
         def start_message(message):
-            self.masseges.start_message(message)
+            if message.from_user.id not in self.user_language:
+                self.masseges.ask_for_language(message)
+            else:
+                self.masseges.start_message(message, self.user_language)
 
-        
+        @self.bot.callback_query_handler(func=lambda call: call.data in ["en", "fa"])
+        def callback_query(call):
+            # Store the user's language preference
+            self.user_language[call.from_user.id] = call.data
+            with open('user_language.pkl', 'wb') as f:
+                pickle.dump(self.user_language, f)
+            self.masseges.start_message(call.message, self.user_language)
+
+
+        @self.bot.callback_query_handler(func=lambda call: call.data == "set_region")
+        def callback_set_region(call):
+            # code to set region
+            self.bot.answer_callback_query(call.id, "Region set")
+
     def run(self) -> None :
         self.bot.infinity_polling()
 
-bot_init = Bot()
-bot_init.run()
+bot = Bot()
+bot.run()

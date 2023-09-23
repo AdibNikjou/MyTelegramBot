@@ -1,0 +1,20 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Welcome to our service"
+msgstr "Welcome to our service"
+
+msgid "Our bot is designed to provide you with the date and time every morning. "
+msgstr "Our bot is designed to provide you with the date and time every morning. "
+
+msgid "With this feature, you'll always be up-to-date and won't miss any important events. "
+msgstr "With this feature, you'll always be up-to-date and won't miss any important events. "
+
+msgid "To ensure accuracy, please set your region and country in the settings. "
+msgstr "To ensure accuracy, please set your region and country in the settings. "
+
+msgid "We look forward to serving you."
+msgstr "We look forward to serving you."
+
