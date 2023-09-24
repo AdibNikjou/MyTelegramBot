@@ -1,6 +1,6 @@
 # MyTelegramBot
 
-## Export Your BOT TOKEN:
+## Export Your BOT TOKEN
 ```
 export BOT_TOKEN= #YOUR BOT TOKEN HERE
 ```
