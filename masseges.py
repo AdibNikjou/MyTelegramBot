@@ -16,8 +16,9 @@ class massege:
         self.user_language = user_language
         print(f"id of user_language in massege: {id(self.user_language)}")  # print the id of user_language in massege
 
-    def start_message(self, message, user_id, user_language):
-        user = message.from_user
+    def start_message(self, call ,message, user_id, user_language):
+        user = call.from_user
+        print(f"user: {user}")  # print the user object
         user_details = ""
         lang = user_language.get(user_id, "fa")
         t = gettext.translation('messages', localedir='locales', languages=[lang])
