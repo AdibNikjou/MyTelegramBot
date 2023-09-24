@@ -7,18 +7,16 @@ class massege:
     def ask_for_language(self, message):
         markup = types.InlineKeyboardMarkup()
         button1 = types.InlineKeyboardButton("English", callback_data="en")
-        button2 = types.InlineKeyboardButton("Persian", callback_data="fa")
+        button2 = types.InlineKeyboardButton("فارسی", callback_data="fa")
         # Add more buttons for different languages
         markup.add(button1, button2)
-        self.bot.send_message(message.chat.id, "Please select your language", reply_markup=markup)
+        return self.bot.send_message(message.chat.id, "Please select your language", reply_markup=markup)
     
     def update_user_language(self, user_language):
         self.user_language = user_language
-        print(f"id of user_language in massege: {id(self.user_language)}")  # print the id of user_language in massege
 
     def start_message(self, call ,message, user_id, user_language):
         user = call.from_user
-        print(f"user: {user}")  # print the user object
         user_details = ""
         lang = user_language.get(user_id, "fa")
         t = gettext.translation('messages', localedir='locales', languages=[lang])
@@ -33,11 +31,13 @@ class massege:
         else:
             user_details +=f"{user.first_name} {user.last_name}"
 
-        reply_message = _("👋 Welcome to our service, {user_details}! Our bot is designed to provide you with the date and time every morning. 🌞 With this feature, you'll always be up-to-date and won't miss any important events. 📅 To ensure accuracy, please set your region and country in the settings. 🌍 We look forward to serving you. 😊")
+        reply_message = _("Start_message👋")
         reply_message = reply_message.format(user_details=user_details)
 
         markup = types.InlineKeyboardMarkup()
-        button1 = types.InlineKeyboardButton(_("Set Country"), callback_data="set_country")
+        button1 = types.InlineKeyboardButton(_("Set Country"), callback_data="select_country")
         markup.add(button1)
 
-        self.bot.reply_to(message, reply_message, reply_markup=markup)
+        self.bot.send_message(chat_id=message.chat.id, text=reply_message, reply_markup=markup)
+        # if you want to reply instead of direct message
+        #self.bot.reply_to(message, reply_message, reply_markup=markup)

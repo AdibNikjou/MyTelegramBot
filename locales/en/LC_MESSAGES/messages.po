@@ -3,7 +3,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "👋 Welcome to our service, {user_details}! Our bot is designed to provide you with the date and time every morning. 🌞 With this feature, you'll always be up-to-date and won't miss any important events. 📅 To ensure accuracy, please set your region and country in the settings. 🌍 We look forward to serving you. 😊"
-msgstr "👋 Welcome to our service, {user_details}! \nOur bot is designed to provide you with the date and time every morning. 🌞 \nWith this feature, you'll always be up-to-date and won't miss any important events. 📅 \nTo ensure accuracy, please set your region and country in the settings. 🌍 \nWe look forward to serving you. 😊"
+msgid "Start_message👋"
+msgstr "👋 Welcome to our service, {user_details}! \nOur bot is designed to provide you with the date and time every morning. 🌞 \nWith this feature, you'll always be up-to-date and won't miss any important events. 📅 \nWe look forward to serving you. 😊 \nTo ensure accuracy, please set your country. 🌍 "
 
 
