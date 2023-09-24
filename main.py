@@ -2,6 +2,8 @@ import telebot
 from masseges import massege
 import os
 import pickle
+from telebot import types
+import gettext
 
 class Bot:
     def __init__(self) -> None:  
@@ -50,8 +52,22 @@ class Bot:
             # code to set country
             self.bot.answer_callback_query(call.id, "Country Set")
 
+        @self.bot.callback_query_handler(func=lambda call: call.data == "settings")
+        def callback_settings(call):
+            markup = types.InlineKeyboardMarkup()
+            button1 = types.InlineKeyboardButton(self.masseges._("Language",self.user_language,call.from_user.id), callback_data="select_language")
+            # Add more buttons for different settings
+            markup.add(button1)
+
+            self.bot.send_message(chat_id=call.message.chat.id, text=self.masseges._("Settings",self.user_language,call.from_user.id), reply_markup=markup)
+
+        @self.bot.callback_query_handler(func=lambda call: call.data == "select_language")
+        def callback_select_language(call):
+            self.ask_for_language_message_id = self.masseges.ask_for_language(call.message).message_id
+
     def run(self) -> None :
         self.bot.infinity_polling()
+    
 
 bot = Bot()
 bot.run()

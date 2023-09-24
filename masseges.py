@@ -3,6 +3,12 @@ import gettext
 class massege:
     def __init__(self, bot) -> None:
         self.bot = bot
+    
+    def _(self , text,user_language , user_id):
+        lang = user_language.get(user_id, "fa")
+        t = gettext.translation('messages', localedir='locales', languages=[lang])
+        _ = t.gettext
+        return _(text)
 
     def ask_for_language(self, message):
         markup = types.InlineKeyboardMarkup()
@@ -18,9 +24,6 @@ class massege:
     def start_message(self, call ,message, user_id, user_language):
         user = call.from_user
         user_details = ""
-        lang = user_language.get(user_id, "fa")
-        t = gettext.translation('messages', localedir='locales', languages=[lang])
-        _ = t.gettext
 
         if user.first_name is None and user.last_name is None:
             pass
@@ -31,12 +34,13 @@ class massege:
         else:
             user_details +=f"{user.first_name} {user.last_name}"
 
-        reply_message = _("Start_message👋")
+        reply_message = self._("Start_message👋",user_language,user_id)
         reply_message = reply_message.format(user_details=user_details)
 
         markup = types.InlineKeyboardMarkup()
-        button1 = types.InlineKeyboardButton(_("Set Country"), callback_data="select_country")
-        markup.add(button1)
+        button1 = types.InlineKeyboardButton(self._("Set Country",user_language,user_id), callback_data="select_country")
+        button2 = types.InlineKeyboardButton(self._("Settings",user_language,user_id), callback_data="settings")
+        markup.add(button1, button2)
 
         self.bot.send_message(chat_id=message.chat.id, text=reply_message, reply_markup=markup)
         # if you want to reply instead of direct message
