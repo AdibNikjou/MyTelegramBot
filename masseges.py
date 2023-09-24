@@ -11,11 +11,15 @@ class massege:
         # Add more buttons for different languages
         markup.add(button1, button2)
         self.bot.send_message(message.chat.id, "Please select your language", reply_markup=markup)
-        
-    def start_message(self, message, user_language):
+    
+    def update_user_language(self, user_language):
+        self.user_language = user_language
+        print(f"id of user_language in massege: {id(self.user_language)}")  # print the id of user_language in massege
+
+    def start_message(self, message, user_id, user_language):
         user = message.from_user
         user_details = ""
-        lang = user_language.get(user.id, "fa")
+        lang = user_language.get(user_id, "fa")
         t = gettext.translation('messages', localedir='locales', languages=[lang])
         _ = t.gettext
 
