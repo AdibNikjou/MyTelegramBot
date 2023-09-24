@@ -3,18 +3,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Welcome to our service"
-msgstr "به سرویس ما خوش اومدی"
+msgid "👋 Welcome to our service, {user_details}! Our bot is designed to provide you with the date and time every morning. 🌞 With this feature, you'll always be up-to-date and won't miss any important events. 📅 To ensure accuracy, please set your region and country in the settings. 🌍 We look forward to serving you. 😊"
+msgstr "به سرویس ما خوش اومدی 👋,   {user_details} !  \n ربات ما طراحی شده تا خدماتی همچون تاریخ و زمان و مناسبت ها را برای شما هر روز صبح تهیه کند . 🌞 \n  با ویژگی های این ربات, شما همیشه به روز خواهید بود. مطمئن باشید هیچ رویداد مهمی رو از دست نخواهید داد. 📅 \n  برای اطمینان از دقیق بودن برنامه لطفا کشور و موقعیت خود را در تنظیمات انتخاب بفرمایید. 🌍  \n ما برای خدمت رسانی به شما لحظه شماری میکنیم."
 
-msgid "Our bot is designed to provide you with the date and time every morning. "
-msgstr "ربات ما طراحی شده تا خدماتی همچون تاریخ و زمان و مناسبت ها را برای شما هر روز صبح ارایه دهد."
 
-msgid "With this feature, you'll always be up-to-date and won't miss any important events. "
-msgstr "با ویژگی های این ربات, شما همیشه به روز خواهید بود.مطمين باشید هیچ رویداد مهمی رو از دست نخواهید داد."
+msgid "Set Region"
+msgstr "انتخاب منطقه"
 
-msgid "To ensure accuracy, please set your region and country in the settings. "
-msgstr "برای اطمینان از دقیق بودن برنامه لطفا کشور و موقعیت خود را در تنظیمات انتخاب بفرمایید."
-
-msgid "We look forward to serving you."
-msgstr "ما برای خدمت رسانی به شما لحظه شماری میکنیم."
-
+msgid "Set Country"
+msgstr "انتخاب کشور"

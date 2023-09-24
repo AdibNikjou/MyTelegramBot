@@ -28,16 +28,11 @@ class massege:
         else:
             user_details +=f"{user.first_name} {user.last_name}"
 
-        reply_message = _("Welcome to our service, {user_details}! "
-                        "Our bot is designed to provide you with the date and time every morning. "
-                        "With this feature, you'll always be up-to-date and won't miss any important events. "
-                        "To ensure accuracy, please set your region and country in the settings. "
-                        "We look forward to serving you.")
+        reply_message = _("👋 Welcome to our service, {user_details}! Our bot is designed to provide you with the date and time every morning. 🌞 With this feature, you'll always be up-to-date and won't miss any important events. 📅 To ensure accuracy, please set your region and country in the settings. 🌍 We look forward to serving you. 😊")
         reply_message = reply_message.format(user_details=user_details)
 
         markup = types.InlineKeyboardMarkup()
-        button1 = types.InlineKeyboardButton(_("Set Region"), callback_data="set_region")
-        button2 = types.InlineKeyboardButton(_("Set Country"), callback_data="set_country")
-        markup.add(button1, button2)
+        button1 = types.InlineKeyboardButton(_("Set Country"), callback_data="set_country")
+        markup.add(button1)
 
         self.bot.reply_to(message, reply_message, reply_markup=markup)

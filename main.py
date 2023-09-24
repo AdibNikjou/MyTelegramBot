@@ -32,10 +32,10 @@ class Bot:
             self.masseges.start_message(call.message, self.user_language)
 
 
-        @self.bot.callback_query_handler(func=lambda call: call.data == "set_region")
+        @self.bot.callback_query_handler(func=lambda call: call.data == "set_country")
         def callback_set_region(call):
-            # code to set region
-            self.bot.answer_callback_query(call.id, "Region set")
+            # code to set country
+            self.bot.answer_callback_query(call.id, "Country Set")
 
     def run(self) -> None :
         self.bot.infinity_polling()
